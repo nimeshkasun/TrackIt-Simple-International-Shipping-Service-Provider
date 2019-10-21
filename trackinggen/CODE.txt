@@ -1,1 +1,0 @@
-http://localhost/courier/trackinggen/tgen.php?TGEN=true&countrycode=LK&sname=Nimesh%20Kasun&sadd=Borupana,%20Ratmalana&sphone=0718810575&semail=nimesh.ekanayaka7@gmail.com&bname=Dimuthu%20Chamod&badd=Track%2005,%20Anuradhapura&bphone=0776777668&bemail=kdusouthern34@gmail.com&itemname=Atlas%20CR%20Book&iprice=12

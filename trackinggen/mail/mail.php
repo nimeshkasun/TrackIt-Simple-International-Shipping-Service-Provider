@@ -28,11 +28,7 @@ $mail->SMTPSecure = 'tls';
 //Whether to use SMTP authentication
 $mail->SMTPAuth = true;
 
-//Username to use for SMTP authentication - use full email address for gmail
-$mail->Username = "kduonlinecms@gmail.com";
-$Username = "kduonlinecms@gmail.com";
-//Password to use for SMTP authentication
-$mail->Password = "Password";
+require_once "emailpass.php";
 
 //Set who the message is to be sent from
 $mail->setFrom($Username, 'TrackIt');

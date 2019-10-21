@@ -1,6 +1,11 @@
 <?php 
 	session_start();
 	//$db = mysqli_connect('localhost', 'root', '', 'courierdb');
+	
+	
+
+function getTracking($tgen,$countrycode,$sname,$sadd,$sphone,$semail,$bname,$badd,$bphone,$bemail,$itemname,$iprice)
+{	
 	require_once "../db/conn.php";
 	$formattedtnum = "";
 	$shipmentcost = "";
@@ -47,24 +52,25 @@
 	$sadd = "";
 	$id = 0;
 	$update = false;
+	$a="aaa";
 
-	if (isset($_GET['TGEN'])) {
+	if ($tgen=="true") {
 
 		$now = new DateTime();
 		$date = $now->format('Y-m-d H:i:s');    // MySQL datetime format
 		$time = $now->getTimestamp();
 
-		$countrycode = $_GET['countrycode'];
-		$sname = $_GET['sname'];
-		$sadd = $_GET['sadd'];
-		$sphone = $_GET['sphone'];
-		$semail = $_GET['semail'];
-		$bname = $_GET['bname'];
-		$badd = $_GET['badd'];
-		$bphone = $_GET['bphone'];
-		$bemail = $_GET['bemail'];
-		$itemname = $_GET['itemname'];
-		$iprice = $_GET['iprice'];
+		$countrycode = $countrycode;
+		$sname = $sname;
+		$sadd = $sadd;
+		$sphone = $sphone;
+		$semail = $semail;
+		$bname = $bname;
+		$badd = $badd;
+		$bphone = $bphone;
+		$bemail = $bemail;
+		$itemname = $itemname;
+		$iprice = $iprice;
 		//$datentime = $date." ".$time;
 		$generatedtrackingnum = $countrycode.$formattedtnum;
 		$shipping="";
@@ -93,20 +99,6 @@
 			$shipmentcost = $iprice+$shipping;
 		}
 
-		echo $countrycode;
-		echo $sname;
-		echo $sadd ;
-		echo $sphone ;
-		echo $semail;
-		echo $bname ;
-		echo $badd;
-		echo $bphone ;
-		echo $bemail ;
-		echo $itemname;
-		echo $iprice ;
-		echo $shipmentcost;
-		echo $generatedtrackingnum;
-
 		mysqli_query($conn, "INSERT INTO tbtrackingstatus (TrackingNumber, TrackingStatus) VALUES ('$generatedtrackingnum', 'DS')"); 
 
 		mysqli_query($conn, "INSERT INTO tbshipment (trackingnumber, sname, sadd, sphone, semail, bname, badd, bphone, bemail, itemname, iprice, shipmentcost) VALUES ('$generatedtrackingnum', '$sname', '$sadd', '$sphone', '$semail', '$bname', '$badd', '$bphone', '$bemail', '$itemname', '$iprice', '$shipmentcost')"); 
@@ -119,7 +111,49 @@
 		$datentime = $date." ".$time;
 		mysqli_query($conn, "INSERT INTO tbtrackingrecords (trackingnumber, tracking_record, tracking_comment, datentime) VALUES ('$generatedtrackingnum', '$tracking_record', '$tracking_comment', '$datentime')"); 
 		require_once "mail/mail.php";
+		
+		return $generatedtrackingnum;
 	}
+
+
+
+
+
+}
+
+
+require_once "./nusoap/lib/nusoap.php";
+
+$server = new soap_server();
+$server->soap_defencoding='UTF-8';
+$server->configureWSDL("getTnum", "urn:getTnum");
+$server->register("getTracking",
+array(
+	"tgen" => "xsd:string",
+	"countrycode" => "xsd:string",
+	"sname" => "xsd:string",
+	"sadd" => "xsd:string",
+	"sphone" => "xsd:int",
+	"semail" => "xsd:string",
+	"bname" => "xsd:string",
+	"badd" => "xsd:string",
+	"bphone" => "xsd:int",
+	"bemail" => "xsd:string",
+	"itemname" => "xsd:string",
+	"iprice" => "xsd:float"
+),
+array("return" => "xsd:string"),
+"urn:getTnum",
+"urn:getTnum#getTracking",
+"rpc",
+"encoded",
+"Get a Tracking Number");
+
+if(!isset($HTTP_RAW_POST_DATA))
+$HTTP_RAW_POST_DATA = file_get_contents( "php://input" );
+$server->service($HTTP_RAW_POST_DATA);
+
+	
 
  /*
 	if (isset($_POST['update'])) {

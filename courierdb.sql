@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2019 at 05:52 PM
+-- Generation Time: Oct 21, 2019 at 07:50 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -334,7 +334,10 @@ INSERT INTO `tbshipment` (`trackingnumber`, `sname`, `sadd`, `sphone`, `semail`,
 ('LK00000001', 'Nimesh Kasun', 'Borupana, Ratmalana', 718810575, 'nimesh.ekanayaka7@gmail.com', 'Dimuthu Chamod', 'Track 05, Anuradhapura', 776777668, 'kdusouthern34@gmail.com', 'Atlas CR Book', 12, 27),
 ('LK00000002', 'Nimesh Kasun', 'Borupana, Ratmalana', 718810575, 'nimesh.ekanayaka7@gmail.com', 'Dimuthu Chamod', 'Track 05, Anuradhapura', 776777668, 'kdusouthern34@gmail.com', 'Atlas CR Book', 12, 27),
 ('LK00000010', 'Nimesh Kasun', 'Borupana, Ratmalana', 718810575, 'nimesh.ekanayaka7@gmail.com', 'Dimuthu Chamod', 'Track 05, Anuradhapura', 776777668, 'kdusouthern34@gmail.com', 'Atlas CR Book', 12, 27),
-('LK00000011', 'Nimesh Kasun', 'Borupana, Ratmalana', 718810575, 'nimesh.ekanayaka7@gmail.com', 'Dimuthu Chamod', 'Track 05, Anuradhapura', 776777668, 'kdusouthern34@gmail.com', 'Atlas CR Book', 12, 27);
+('LK00000011', 'Nimesh Kasun', 'Borupana, Ratmalana', 718810575, 'nimesh.ekanayaka7@gmail.com', 'Dimuthu Chamod', 'Track 05, Anuradhapura', 776777668, 'kdusouthern34@gmail.com', 'Atlas CR Book', 12, 27),
+('LK00000012', '', '', 718810575, 'nimesh.ekanayaka7@gmail.com', 'Dimuthu Chamod', 'Track 05, Galenbindunuwewa', 718810575, 'kdusouthern34@gmail.com', 'Atlas CR Book', 12, 27),
+('LK00000013', '', '', 718810575, 'nimesh.ekanayaka7@gmail.com', 'Dimuthu Chamod', 'Track 05, Galenbindunuwewa', 718810575, 'kdusouthern34@gmail.com', 'Atlas CR Book', 12, 27),
+('LK00000014', '', '', 718810575, 'nimesh.ekanayaka7@gmail.com', 'Dimuthu Chamod', 'Track 05, Galenbindunuwewa', 718810575, 'kdusouthern34@gmail.com', 'Atlas CR Book', 12, 27);
 
 -- --------------------------------------------------------
 
@@ -362,7 +365,10 @@ INSERT INTO `tbtrackingrecords` (`RID`, `trackingnumber`, `tracking_record`, `tr
 (19, 'LK00000010', 'ITEM RECEIVED AT TrackIt Parcel Centre, Colombo-03, Sri Lanka', '', '2019-10-16 22:03:42 1571256222'),
 (20, 'LK00000010', 'ITEM SENT OUT FROM TrackIt Parcel Centre, Colombo-03, Sri Lanka', '', '2019-10-16 22:03:58 1571256238'),
 (21, 'LK00000002', 'ITEM HOLDED AT TrackIt HQ - Colombo, Sri Lanka', '', '2019-10-17 05:17:50 1571282270'),
-(22, 'LK00000011', 'Tracking Generated', 'Successful payment. Waitng to receive the package.', '2019-10-17 05:19:08 1571282348');
+(22, 'LK00000011', 'Tracking Generated', 'Successful payment. Waitng to receive the package.', '2019-10-17 05:19:08 1571282348'),
+(23, 'LK00000012', 'Tracking Generated', 'Successful payment. Waitng to receive the package.', '2019-10-21 18:54:45 1571676885'),
+(24, 'LK00000013', 'Tracking Generated', 'Successful payment. Waitng to receive the package.', '2019-10-21 19:23:30 1571678610'),
+(25, 'LK00000014', 'Tracking Generated', 'Successful payment. Waitng to receive the package.', '2019-10-21 19:27:57 1571678877');
 
 -- --------------------------------------------------------
 
@@ -384,7 +390,10 @@ INSERT INTO `tbtrackingstatus` (`RID`, `TrackingNumber`, `TrackingStatus`) VALUE
 (1, 'LK00000001', 'DS'),
 (9, 'LK00000002', 'OD'),
 (10, 'LK00000010', 'IT'),
-(11, 'LK00000011', 'DS');
+(11, 'LK00000011', 'DS'),
+(12, 'LK00000012', 'DS'),
+(13, 'LK00000013', 'DS'),
+(14, 'LK00000014', 'DS');
 
 -- --------------------------------------------------------
 
@@ -475,13 +484,13 @@ ALTER TABLE `tblocation`
 -- AUTO_INCREMENT for table `tbtrackingrecords`
 --
 ALTER TABLE `tbtrackingrecords`
-  MODIFY `RID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `RID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tbtrackingstatus`
 --
 ALTER TABLE `tbtrackingstatus`
-  MODIFY `RID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `RID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbuser`

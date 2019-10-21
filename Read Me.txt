@@ -1,5 +1,5 @@
 * Create new Database named "courierdb" and import the 'courierdb.sql' file to the created DB in SQL Server/ Xampp
-* Go to trackinggen\mail folder and edit both 'mail.php' and 'mail2.php'
+* Go to trackinggen\mail folder and edit 'emailpass.php'
 	- find the code lines: 
 		$mail->Username = "kduonlinecms@gmail.com";
 		$Username = "kduonlinecms@gmail.com";
@@ -8,10 +8,22 @@
 	- Your email account must be enabled to allow low secure apps in account settings
 * Admin Login: username- admin password- admin123
 * Agent Login: username- user password- user123
-* Use this API formatted link to pass data and generate tracking numbers and automatically store in database:
-	http://localhost/courier/trackinggen/tgen.php?TGEN=true&countrycode=LK&sname=Nimesh%20Kasun&sadd=Borupana,%20Ratmalana&sphone=0718810575&semail=nimesh.ekanayaka7@gmail.com&bname=Dimuthu%20Chamod&badd=Track%2005,%20Anuradhapura&bphone=0776777668&bemail=kdusouthern34@gmail.com&itemname=Atlas%20CR%20Book&iprice=12
-	- You can use above format to allow other external systems to pass data to the system directly.
-	- 'semail' is seller's email and 'bemail' is buyer's email. Both will receive tracking number via email
+* Use 'tgen-Test.php' file to send data to generate tracking. Data is sent via SOAP web services. And generated tracking number is returned.
+	- you can use 'trackinggen/tgen.php?wsdl' or 'http://localhost/courier/trackinggen/tgen.php?wsdl' as WSDL URL to pass Data to the system through external systems.
+	- But to use external web services, you must send following variables through the service.
+		$tgen
+		$countrycode
+		$sname
+		$sadd
+		$sphone
+		$semail
+		$bname
+		$badd
+		$bphone
+		$bemail
+		$itemname
+		$iprice
+	- For a clear idea, check the coding in 'tgen-Test.php'.
 
 Thank you!
 
